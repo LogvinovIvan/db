@@ -31,6 +31,7 @@ FROM HumanResources.EmployeeDepartmentHistory
 JOIN HumanResources.Shift ON EmployeeDepartmentHistory.ShiftID = Shift.ShiftID
 JOIN HumanResources.Employee ON EmployeeDepartmentHistory.BusinessEntityID = Employee.BusinessEntityID
 JOIN HumanResources.Department ON EmployeeDepartmentHistory.DepartmentID = Department.DepartmentID
+WHERE EmployeeDepartmentHistory.EndDate IS NULL
 ORDER BY DepName,
          CASE
              WHEN Department.Name = 'Document Control' THEN Shift.ShiftID
