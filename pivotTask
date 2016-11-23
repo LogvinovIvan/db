@@ -1,0 +1,13 @@
+
+DECLARE @t TABLE
+            (
+              A INT PRIMARY KEY ,
+              B nvarchar(1)
+            )
+
+INSERT INTO @t VALUES(1,'x');
+INSERT INTO @t VALUES(2,'y');
+INSERT INTO @t VALUES(3,'z');
+
+
+SELECT [x],[y],[z] FROM (SELECT A,B FROM @t) AS t1 PIVOT(MIN(A) FOR B IN ([x],[y],[z])) as pivot1;
